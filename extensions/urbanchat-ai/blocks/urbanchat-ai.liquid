@@ -1,0 +1,47 @@
+<script>
+  let urbanChatbotId = '';
+  const shopURL = '{{ shop.permanent_domain }}';
+  console.log({ shopURL });
+
+  async function loadUrbanchatBot() {
+    try {
+      console.log('loading chabot');
+      var url = 'https://backend.urbanchat.ai/api/fetch-chatbot-with-shopify?shopify_store_url=' + shopURL;
+      // Making a GET request using fetch
+      const response = await fetch(url, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'pragma': 'no-cache',
+          'cache-control': 'no-cache'
+        },
+      });
+
+      // Checking if the response is successful (status code 200-299)
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      // Parsing the response as JSON
+      const data = await response.json();
+
+      urbanChatbotId = data.chatbot_id;
+
+      var script = document.createElement('script');
+      script.src = 'https://urbanchat.ai/integration/chatbot-integration.js';
+      document.body.appendChild(script);
+    } catch (error) {
+      // Handling any errors that occur during the fetch
+      console.error('Failed to load chatbot:', error);
+    }
+  }
+
+  loadUrbanchatBot();
+</script>
+{% schema %}
+{
+  "name": "Urbanchat.ai",
+  "target": "body",
+  "settings": []
+}
+{% endschema %}

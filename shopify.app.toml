@@ -1,0 +1,29 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "05c6d3d1a207c5da561788fad52bc616"
+name = "Urbanchat.ai"
+handle = "urbanchat-ai"
+application_url = "https://recognize-fioricet-attending-toe.trycloudflare.com"
+embedded = true
+
+[build]
+automatically_update_urls_on_dev = true
+dev_store_url = "quickstart-596a1932.myshopify.com"
+include_config_on_deploy = true
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "write_products"
+
+[auth]
+redirect_urls = [
+  "https://recognize-fioricet-attending-toe.trycloudflare.com/auth/callback",
+  "https://recognize-fioricet-attending-toe.trycloudflare.com/auth/shopify/callback",
+  "https://recognize-fioricet-attending-toe.trycloudflare.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-04"
+
+[pos]
+embedded = false
