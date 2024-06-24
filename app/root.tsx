@@ -18,16 +18,35 @@ export async function loader({ request }: LoaderFunctionArgs) {
 
   const { shop } = session;
 
+  const themesResponse = await admin.rest.resources.Theme.all({
+    session: session,
+  });
+
+  // Extract the themes from the response
+  const themes = themesResponse.data || [];
+  const publishedTheme = themes.find(theme => theme.role === 'main');
+  console.log(publishedTheme)
+
 
   return json({
     apiKey: process.env.SHOPIFY_API_KEY,
     shop: shop,
+    publishedThemeId: publishedTheme ? publishedTheme.id : null,
   });
 }
 
 export default function App() {
   let { apiKey, shop } = useLoaderData<typeof loader>();
+ const { publishedThemeId } = useLoaderData<typeof loader>();
 
+ const handleOpenCustomizer = () => {
+  if (publishedThemeId) {
+    const customizerUrl = `https://${shop}/admin/themes/${publishedThemeId}/editor?context=apps`;
+    window.open(customizerUrl, '_blank');
+  } else {
+    console.error('Published theme ID not found');
+  }
+};
 
   return (
     <html>
@@ -72,6 +91,7 @@ export default function App() {
                   </a>
                   .
                 </p>
+                <button style={{marginTop:"20px",background:"black",color:"white",padding:"10px 20px",border:"none",cursor:"pointer"}} onClick={handleOpenCustomizer}>Enable App</button>
               </div>
             </Card>
           </Page>
