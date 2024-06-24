@@ -1,0 +1,31 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "818ad4ccf2ca9523624a4ec8502929de"
+name = "Urbanchat Ai"
+handle = "urbanchat-ai-1"
+application_url = "https://urbanchat-0853ce8db836.herokuapp.com/"
+embedded = true
+
+[build]
+include_config_on_deploy = false
+
+[access_scopes]
+# Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
+scopes = "read_themes"
+
+[auth]
+redirect_urls = [
+  "https://urbanchat-0853ce8db836.herokuapp.com/auth/callback",
+  "https://urbanchat-0853ce8db836.herokuapp.com/auth/shopify/callback",
+  "https://urbanchat-0853ce8db836.herokuapp.com/api/auth/callback"
+]
+
+[webhooks]
+api_version = "2024-04"
+
+  [[webhooks.subscriptions]]
+  uri = "https://urbanchat-0853ce8db836.herokuapp.com/webhooks"
+  compliance_topics = [ "customers/redact", "customers/data_request", "shop/redact" ]
+
+[pos]
+embedded = false
