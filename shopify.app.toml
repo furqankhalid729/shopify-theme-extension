@@ -1,25 +1,24 @@
 # Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
 
-client_id = "05c6d3d1a207c5da561788fad52bc616"
-name = "Urbanchat.ai"
-handle = "urbanchat-ai"
-application_url = "https://recognize-fioricet-attending-toe.trycloudflare.com"
+client_id = "a5578cdb0b3dc73349e3750441eafe57"
+name = "Urban Chat"
+handle = "urban-chat-1"
+application_url = "https://challenged-junction-utilization-hereby.trycloudflare.com"
 embedded = true
 
 [build]
 automatically_update_urls_on_dev = true
-dev_store_url = "quickstart-596a1932.myshopify.com"
-include_config_on_deploy = true
+dev_store_url = "testf5363.myshopify.com"
 
 [access_scopes]
 # Learn more at https://shopify.dev/docs/apps/tools/cli/configuration#access_scopes
-scopes = "write_products,read_themes"
+scopes = "read_themes"
 
 [auth]
 redirect_urls = [
-  "https://recognize-fioricet-attending-toe.trycloudflare.com/auth/callback",
-  "https://recognize-fioricet-attending-toe.trycloudflare.com/auth/shopify/callback",
-  "https://recognize-fioricet-attending-toe.trycloudflare.com/api/auth/callback"
+  "https://challenged-junction-utilization-hereby.trycloudflare.com/auth/callback",
+  "https://challenged-junction-utilization-hereby.trycloudflare.com/auth/shopify/callback",
+  "https://challenged-junction-utilization-hereby.trycloudflare.com/api/auth/callback"
 ]
 
 [webhooks]
